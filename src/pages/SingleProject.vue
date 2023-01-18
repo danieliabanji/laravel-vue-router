@@ -3,10 +3,20 @@
         <h1 class="text-center">
             {{ project.title }}
         </h1>
-        <img :src="`${store.imageBasePath}${project.cover_image}`" class="card-img-top" :alt="project.title">
-        <p>
-            {{ project.content }}
-        </p>
+        <div class="text-center">
+            <img :src="`${store.imageBasePath}${project.cover_image}`" :alt="project.title">
+        </div>
+        <div>
+            <p>
+                {{ project.content }}
+            </p>
+        </div>
+        <!-- <div v-if="project.git_link"> -->
+        <h5>
+            <a :href="project.git_link"> {{ project.git_link }}</a>
+
+        </h5>
+        <!-- </div> -->
         <div v-if="project.type">
             <h5>
                 Type: {{ project.type.name }}
@@ -17,7 +27,7 @@
                 Tags
             </h5>
             <div>
-                <span v-for="(tag, index) in project.tags" :key="index" class="badge text-bg-info">
+                <span v-for="(tag, index) in project.tags" :key="index" class="badge text-bg-info m-2">
                     {{ tag.name }}
                 </span>
             </div>
@@ -44,7 +54,7 @@ export default {
         getProject() {
             console.log(this.$route);
             axios.get(`${this.store.apiBaseUrl}/projects/${this.$route.params.slug}`).then((response) => {
-                // console.log(response.data.results);
+                console.log(response.data.results);
                 if (response.data.success) {
                     // console.log(response.data.results);
                     this.project = response.data.results;
@@ -63,5 +73,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+img {
+    width: 100%;
+    padding: 2rem 0;
+}
 </style>

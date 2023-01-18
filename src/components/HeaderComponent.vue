@@ -1,8 +1,8 @@
 <template>
     <header>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+        <nav class="navbar  bg-dark navbar-expand-lg">
+            <div class="container-fluid ">
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-white" href="/">BoolPress</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +12,8 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                         <li class="nav-item " v-for="(item, index) in menuItems" :key="index">
-                            <router-link :to="{ name: item.routeName }" active-class="active" class="nav-link">
+                            <router-link :to="{ name: item.routeName }" active-class="active"
+                                class="nav-link text-white">
                                 {{ item.label }}
                             </router-link>
                         </li>
